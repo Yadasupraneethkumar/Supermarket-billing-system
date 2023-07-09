@@ -1,0 +1,238 @@
+#include<iostream>
+#include<windows.h>
+using namespace std;
+class shopping
+{
+    private:
+    int pcode;
+    float price;
+    float dis;
+    string pname;
+
+    public:
+    void menu();
+    void administrator();
+    void buyer();
+    void add();
+    void edit();
+    void rem();
+    void list();
+    void receipt();
+
+};
+void shopping :: menu()
+{
+    start:
+    int choice;
+    string email;
+    string password;
+
+    cout<<"\t\t\t________________________________\n";
+    cout<<"\t\t\t                                \n"; 
+    cout<<"\t\t\t   SUPERMARKET MAIN MENU        \n";
+    cout<<"\t\t\t________________________________\n";
+    cout<<"\t\t\t                                \n";
+    cout<<"\t\t\t|  1) Administrator   |\n";
+    cout<<"\t\t\t|  2) Buyer           |\n";
+    cout<<"\t\t\t|  3) Exit            |\n";
+    cout<<"\n\t\t Please select";
+    cin>>choice;
+
+    switch (choice){
+        case 1:{
+        cout<<"\t\t\t Please Login \n";
+        cout<<"\t\t\t Enter Email  \n";
+        cin>>email;
+        cout<<"\t\t\t Password     \n";
+        cin>>password;
+
+        if(email=="praneeth@email.com" && password=="praneeth@123")
+        {
+            administrator();
+        }
+        else{
+            cout<<"Invalid email/password";
+        }
+        break;
+        }
+
+case 2:{
+         buyer();
+   }
+case 3:{
+         exit(0);
+   }
+   default :
+        {
+            cout<<"Please select from te given options";
+        }
+}
+goto start;
+}
+void shopping:: administrator()
+{
+    start:
+    int choice;
+    cout<<"\n\n\t\tAdministrator menu";
+    cout<<"\n\t\t|____1) Add the product______|";
+    cout<<"\n\t\t|____2) Modify the product___|";
+    cout<<"\n\t\t|____3) Delete the product___|";
+    cout<<"\n\t\t|____4) Back to the main menu|";
+
+    cout<<"\n\n\t please enter your choice";
+    cin>>choice;
+
+    switch(choice)
+    {
+        case 1:
+            add();
+            break;
+        case 2:
+            edit();
+            break;
+        case 3:
+            rem();
+            break;
+        case 4:
+            menu();
+            break;
+        default :
+        cout<<"Invalid choice";
+    }          
+    goto start;
+}
+void shopping:: buyer()
+{
+    start:
+    int choice;
+    cout<<"\t\t\t Buyer \n";
+    cout<<"\n\t\t\t\t| 1) Buy Product \n";
+    cout<<"\n\t\t\t\t| 2) Go back     \n";
+    cout<<"\n\t\t\t\t|Enter your choice\n";
+    cin>>choice;
+
+    switch(choice){
+        case 1:
+            receipt();
+            break;
+        case 2:
+            menu();
+            break;
+        default :
+        cout<<"Invalid choice";
+  }
+  goto start;
+}
+void shopping:: add()
+{
+    start:
+    
+    int c;
+    int token=0;
+    float p;
+    float d;
+    string n;
+
+    cout<<"\n\n\t\t Add new Product";
+    cout<<"\n\n\t\t code of the product:";
+    cin>>pcode;
+    cout<<"\n\n\t\t Name of the product:";
+    cin>>pname;
+    cout<<"\n\n\t\t Price of the product:";
+    cin>>pname;
+    cout<<"\n\n\t\t Discount on product:";
+    cin>>dis;
+    cout<<"\n\n\t\t Record Inserted !";
+}    
+
+void shopping::edit()
+{
+    int pkey;
+    int token=0;
+    int c;
+    float p;
+    float d;
+    string n;
+
+    cout<<"\n\n\t\t Modify the record";
+    cout<<"\n\n\t\t Product code :";
+    cin>>pkey;
+    
+        if(pkey==pcode)
+        {
+            cout<<"\n\t\t Product new code:";
+            cin>>c;
+            cout<<"\n\t\t Name of the product:";
+            cin>>n;
+            cout<<"\n\t\t Price:";
+            cin>>p;
+            cout<<"\n\t\t Discount:";
+            cin>>d;
+        }
+
+    if(token==0)
+    {
+        cout<<"\n\n Record not found sorry!";
+    }
+
+  }
+
+
+void shopping::rem()
+{
+    
+    int pkey;
+    int token=0;
+    cout<<"\n\n\t Delete product";
+    cout<<"\n\n\t Product code";
+    cin>>pkey;
+            if(pcode==pkey)
+            {
+                cout<<"\n\n\t Product deleted successfully";
+                token++;
+        if(token==0)
+        {
+            cout<<"\n\n Record out found";
+        }
+    }
+}
+
+
+void shopping::list()
+{
+    cout<<"\n ProNo\t\tName\t\tPrice\n";
+    
+}
+
+void shopping::receipt()
+{
+start:
+   int arrc[100];
+   int arrq[100];
+   char choice;
+   int c=0;
+   float amount=0;
+   float dis=0;
+   float total=0;
+
+   cout<<"\n\n\t\t RECEIPT ";
+
+   list();
+   cout<<" PLEASE PLACE THE ORDER \n";
+     cout<<"\nEnter Product code:";
+     cin>>arrc[c];
+     cout<<"\nEnter the Product";
+     cin>>arrq[c];
+     cout<<"\n\n\t\tReceipt\n";
+     cout<<"\nProduct No\t Product name\t product quantity\t price\t amount\t amount with discount \n";
+     cout<<"Total amount:"<<total;
+    
+}
+int main()
+{
+    shopping s;
+    s.menu();
+
+    return 0;
+
+}
